@@ -1,36 +1,43 @@
 require_relative = 'dealer'
 class Car
-	@@active_if_repeat = false
-	def set_repeat(input)
-		@@active_if_repeat = input
+	def initialize(name, make, model, color, doors)
+		@name = name
+		@make = make
+		@model = model
+		@color = color
+		@door = doors
+		@active_if_repeat = false
+		def set_repeat(input)
+			@active_if_repeat = input
+		end
+
+		@user_info = {}
+		@manu_list = %w(
+									Ford
+									Vauxhall
+									Bentley
+									Honda)
 	end
 
-	@@user_info = {}
-	@@manu_list = %w(
-								Ford
-								Vauxhall
-								Bentley
-								Honda)
-
 	def display_user_info
-		@@user_info
+		@user_info
 	end
 
 	def grab_user_info
-		@@user_info = @@user.get_user_info
+		@user_info = @user.get_user_info
 	end
 
 	def show_manu_list
 		count = 1
-		p count.to_s + '. ' + @@manu_list[0]
+		p count.to_s + '. ' + @manu_list[0]
 		count+=1
-		p count.to_s + '. ' + @@manu_list[1]
+		p count.to_s + '. ' + @manu_list[1]
 		count+=1
-		p count.to_s + '. ' + @@manu_list[2]
+		p count.to_s + '. ' + @manu_list[2]
 		count+=1
-		p count.to_s + '. ' + @@manu_list[3]
-		if @@active_if_repeat
-			@@active_if_repeat = false
+		p count.to_s + '. ' + @manu_list[3]
+		if @active_if_repeat
+			@active_if_repeat = false
 			p 'Please select a manufacturer.'
 			choice = gets.chomp.to_i
 			choice == 1 ? select_manu('ford') : nil
@@ -53,7 +60,7 @@ class Car
 			p 'honda'
 		else
 			p 'Error please try again'
-			@@active_if_repeat = false
+			@active_if_repeat = false
 			show_manu_list
 		end
 	end

@@ -1,26 +1,30 @@
 require_relative 'car'
 class User < Car
-	@@manu = Car.new
-	@@user_info = {}
-	@@amount = 0
-	@@garage_space = 0
-	@@choice = ''
-	@@user_list = [
-		'John Smith',
-		'Charlie Brice',
-		'Foo Bar',
-		'Matt Smith',
-		'Chloe Smith',
-	]
+	def initialize(firstname, lastname)
+		@firstname = firstname
+		@lastname = lastname
+		@manu = Car.new('name', 'make', 'model', 'color', 'doors')
+		@user_info = {}
+		@amount = 0
+		@garage_space = 0
+		@choice = ''
+		@user_list = [
+			'John Smith',
+			'Charlie Brice',
+			'Foo Bar',
+			'Matt Smith',
+			'Chloe Smith',
+		]
+	end
 
 	def get_list
-		@@user_list
+		@user_list
 	end
 
 	def check_choice(choice)
 		choice.to_i if choice.class != 'Fixnum'
-		@@choice = choice
-		case @@choice
+		@choice = choice
+		case @choice
 		when 0
 			p 'Please enter your first name'
 			firstname = gets.chomp
@@ -45,20 +49,20 @@ class User < Car
 				p "To complete your application, please finish off some more questions."
 				p ''
 				p 'How much money are you looking to spend?'
-				@@amount = gets.chomp.to_i
+				@amount = gets.chomp.to_i
 
 				p 'How much garage space do you have?'
-				@@garage_space = gets.chomp.to_i
+				@garage_space = gets.chomp.to_i
 
 				p 'Thank you, we will now display our list of cars.'
-				@@user_list << user
-				@@user_info = {:name => user, :amount => @@amount, :garage_space => @@garage_space}
-				@@manu.set_repeat(true)
-				p @@manu.show_manu_list
+				@user_list << user
+				@user_info = {:name => user, :amount => @amount, :garage_space => @garage_space}
+				@manu.set_repeat(true)
+				p @manu.show_manu_list
 			end
 		end
 
 		def get_user_info
-			@@user_info
+			@user_info
 		end
 	end
