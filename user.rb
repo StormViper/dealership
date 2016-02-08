@@ -3,11 +3,8 @@ class User < Car
 	def initialize(firstname, lastname)
 		@firstname = firstname
 		@lastname = lastname
-		@manu = Car.new('name', 'make', 'model', 'color', 'doors')
+		@manu = Car.new('make', 'model', 'color', 'doors', 0, 0)
 		@user_info = {}
-		@amount = 0
-		@garage_space = 0
-		@choice = ''
 		@user_list = [
 			'John Smith',
 			'Charlie Brice',
@@ -26,26 +23,22 @@ class User < Car
 		@choice = choice
 		case @choice
 		when 0
-			p 'Please enter your first name'
-			firstname = gets.chomp
-			p 'Please enter your second name'
-			lastname = gets.chomp
-			new_user(firstname.capitalize, lastname.capitalize)
+			new_user(@firstname, @lastname)
 		else
 			p 'ERROR'
 		end
 	end
 
 		def new_user(firstName, lastName)
-			if firstName.empty? || lastName.empty?
+			if @firstname.empty? || @lastname.empty?
 				p 'Your first name or last name is empty, please re-enter your first name then last name.'
 				firstname = gets.chomp
 				p 'Now your last name'
 				lastname = gets.chomp
 				new_user(firstname, lastname)
 			else
-				user = firstName + ' ' + lastName
-				p "Thank you for deciding to be a new member of Newland dealers #{firstName}."
+				user = @firstname + ' ' + @lastname
+				p "Thank you for deciding to be a new member of Newland dealers #{@firstname}."
 				p "To complete your application, please finish off some more questions."
 				p ''
 				p 'How much money are you looking to spend?'
