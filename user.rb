@@ -50,6 +50,7 @@ class User < Car
 				p 'Thank you, we will now display our list of cars.'
 				@user_list << user
 				@user_info = {:name => user, :amount => @amount, :garage_space => @garage_space}
+				@manu.set_user_info(@user_info)
 				@manu.set_repeat(true)
 				p @manu.show_manu_list
 			end
