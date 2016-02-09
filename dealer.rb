@@ -25,7 +25,16 @@ p 'Please enter your first and second name.'
 firstName =  gets.chomp
 lastName = gets.chomp
 if firstName.empty? || lastName.empty? 
-	p 'Failed to run firstname or lastname is empty!'
+	p 'Error first or last name is empty please try again'
+	firstName = gets.chomp
+	lastName = gets.chomp
+	if firstName.empty? || lastName.empty? 
+		p 'FAILED'
+	else
+		setup(firstName, lastName)
+		p greeting
+		p run
+	end
 else
 	setup(firstName, lastName)
 	p greeting

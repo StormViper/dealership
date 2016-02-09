@@ -15,6 +15,7 @@ class Car < UserCarManager
 			@active_if_repeat = input
 		end
 
+		@choice = ''
 		@user_info = {}
 		@manu_list = %w(
 									Ford
@@ -82,6 +83,9 @@ class Car < UserCarManager
 
 	def case_for_car_choice(choice)
 		case choice
+			when 0
+			@active_if_repeat = true
+			show_manu_list
 			when 1
 				@UserCar.car_choice('car1')
 			when 2
@@ -114,7 +118,7 @@ class Car < UserCarManager
 	end
 
 	def select_manu(choice)
-		choice.to_i if choice.class != 'Fixnum'
+		@choice = choice
 		case choice
 		when 'ford'
 			car1 = Car.new('Ford', 'Mustang', 'black and green', 3, 11492, 3)
