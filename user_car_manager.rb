@@ -82,7 +82,7 @@ class UserCarManager
 		p 'Are you sure your address is correct?(Y/N)'
 		choice = gets.chomp.downcase
 		if choice == 'y'
-			confirmation(input_filler)
+			payment_confirmation(input_filler)
 		else
 			reset_address(input_filler)
 			p "Your address is: #{@user_info[:number]} #{@user_info[:road]} #{@user_info[:postcode]}"
@@ -90,7 +90,7 @@ class UserCarManager
 			choice = gets.chomp.downcase
 			@address_reset_bool = true
 			if choice == 'y'
-				confirmation(input_filler)
+				payment_confirmation(input_filler)
 			else
 				@address_reset_bool = true
 				reset_address(input_filler)
@@ -121,7 +121,7 @@ class UserCarManager
 		end
 	end
 
-	def confirmation(payment_choice)
+	def payment_confirmation(payment_choice)
 		p 'Are you sure you want to buy this car?(Y/N) If No then this application will close.'
 		choice = gets.chomp.downcase
 		choice == 'y' ? confirm_payment(payment_choice) : nil
