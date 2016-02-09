@@ -96,7 +96,7 @@ class Car < UserCarManager
 			@UserCar.car_choice('car4')
 		else
 			p 'ERROR PLEASE TRY AGAIN'
-			select_manu('ford')
+			select_manu(car_choice)
 	end
 	end
 
