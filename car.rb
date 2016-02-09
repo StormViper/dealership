@@ -82,22 +82,22 @@ class Car < UserCarManager
 	end
 
 	def case_for_car_choice(choice)
-		case choice
-			when 0
-			@active_if_repeat = true
-			show_manu_list
-			when 1
-				@UserCar.car_choice('car1')
-			when 2
-				@UserCar.car_choice('car2')
-			when 3
-				@UserCar.car_choice('car3')
-			when 4
-				@UserCar.car_choice('car4')
-			else
-				p 'ERROR PLEASE TRY AGAIN'
-				select_manu('ford')
-			end
+	case choice
+		when 0
+		@active_if_repeat = true
+		show_manu_list
+		when 1
+			@UserCar.car_choice('car1')
+		when 2
+			@UserCar.car_choice('car2')
+		when 3
+			@UserCar.car_choice('car3')
+		when 4
+			@UserCar.car_choice('car4')
+		else
+			p 'ERROR PLEASE TRY AGAIN'
+			select_manu('ford')
+	end
 	end
 
 	def setup_car_list(car1, car2, car3, car4)
